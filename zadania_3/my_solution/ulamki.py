@@ -71,12 +71,4 @@ class Fraction:
         return Fraction(new_nominator, new_denominator)
 
 
-if __name__ == '__main__':
 
-    half = Fraction(1, 2)
-    quarter = Fraction(1, 4)
-    print(half.nominator)
-    print(half.denominator)
-    result = half / quarter
-    print(result.nominator)
-    print(result.denominator)
