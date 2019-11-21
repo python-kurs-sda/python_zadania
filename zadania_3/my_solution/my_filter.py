@@ -24,8 +24,4 @@ def my_filter(func: Callable, my_list: list) -> list:
     :return: lista po odfiltrowaniu.
 
     """
-    filtered_list = []
-    for element in my_list:
-        if func(element):
-            filtered_list.append(element)
-    return filtered_list
+    return [element for element in my_list if func(element)]
