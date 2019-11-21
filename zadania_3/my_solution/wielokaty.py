@@ -37,7 +37,7 @@ class Kwadrat(Wielokat):
 
 class Prostokat(Wielokat):
 
-    def __init__(self, bok1, bok2: Union[int, float]):
+    def __init__(self, bok1: Union[int, float], bok2: Union[int, float]):
         self.bok1 = bok1
         self.bok2 = bok2
 
@@ -47,7 +47,7 @@ class Prostokat(Wielokat):
 
 class Trojkat(Wielokat):
 
-    def __init__(self, bok, wysokosc: Union[int, float]):
+    def __init__(self, bok: Union[int, float], wysokosc: Union[int, float]):
         self.bok = bok
         self.wysokosc = wysokosc
 
@@ -68,6 +68,5 @@ def licz_pola(wielokaty: list) -> list:
     return [figura.oblicz_pole() for figura in wielokaty]
 
 
-if __name__ == '__main__':
-    pass
+
 
