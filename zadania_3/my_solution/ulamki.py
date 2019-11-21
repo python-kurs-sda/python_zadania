@@ -27,22 +27,21 @@
 """
 
 
-def get_common_denominator(fraction1, fraction2):
-    nominator1 = fraction1.nominator * fraction2.denominator
-    nominator2 = fraction2.nominator * fraction1.denominator
-    common_denominator = fraction1.denominator * fraction2.denominator
-    return nominator1, nominator2, common_denominator
-
-
 class Fraction:
 
     def __init__(self, nominator, denominator: int):
         self.nominator = nominator
         self.denominator = denominator
 
+    def get_common_denominator(self, fraction2):
+        nominator1 = self.nominator * fraction2.denominator
+        nominator2 = fraction2.nominator * self.denominator
+        common_denominator = self.denominator * fraction2.denominator
+        return nominator1, nominator2, common_denominator
+
     def __add__(self, other):
         if self.denominator != other.denominator:
-            nominator1, nominator2, common_denominator = get_common_denominator(self, other)
+            nominator1, nominator2, common_denominator = self.get_common_denominator(other)
             new_nominator = nominator1 + nominator2
             new_denominator = common_denominator
         else:
@@ -52,7 +51,7 @@ class Fraction:
 
     def __sub__(self, other):
         if self.denominator != other.denominator:
-            nominator1, nominator2, common_denominator = get_common_denominator(self, other)
+            nominator1, nominator2, common_denominator = self.get_common_denominator(other)
             new_nominator = nominator1 - nominator2
             new_denominator = common_denominator
         else:
