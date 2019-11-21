@@ -26,9 +26,6 @@ def my_map(func: Callable, my_list: list) -> list:
     :return: lista ze zmienionymi elementami
 
     """
-    map_list = []
-    for element in my_list:
-        map_list.append(func(element))
-    return map_list
+    return [func(element) for element in my_list]
 
 
