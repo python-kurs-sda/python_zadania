@@ -25,7 +25,11 @@ class TestMyMap(unittest.TestCase):
         func = lambda x: x.upper()
         self.assertEqual(my_map(func, test_list), ['ALA', 'OLA', 'IZA'])
 
-    
+    def test_len_strings(self):
+        test_list = ['kot', 'pies', 'zebra', 'kwiat']
+        func = lambda x: len(x)
+        self.assertEqual(my_map(func, test_list), [3, 4, 5, 5])
+
 
 if __name__ == '__main__':
     unittest.main()
