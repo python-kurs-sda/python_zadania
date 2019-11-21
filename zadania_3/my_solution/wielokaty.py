@@ -12,10 +12,10 @@ from abc import ABC, abstractmethod
 from typing import Union
 
 
-class Wielokat(ABC):
+class Polygon(ABC):
 
     @abstractmethod
-    def oblicz_pole(self) -> Union[int, float]:  # Union sugeruje ze funkcja moze zwrocic inta albo floata
+    def get_area(self) -> Union[int, float]:  # Union sugeruje ze funkcja moze zwrocic inta albo floata
         """Metoda ma za zadanie obliczyc pole danego obiektu.
 
         Ze wzgledu na fakt, iz nie wiemy w tym momencie jaki to jest wielokat,
@@ -26,46 +26,46 @@ class Wielokat(ABC):
         ...
 
 
-class Kwadrat(Wielokat):
+class Square(Polygon):
 
-    def __init__(self, bok: Union[int, float]):
-        self.bok = bok
+    def __init__(self, side: Union[int, float]):
+        self.side = side
 
-    def oblicz_pole(self) -> Union[int, float]:
-        return self.bok ** 2
-
-
-class Prostokat(Wielokat):
-
-    def __init__(self, bok1: Union[int, float], bok2: Union[int, float]):
-        self.bok1 = bok1
-        self.bok2 = bok2
-
-    def oblicz_pole(self) -> Union[int, float]:
-        return self.bok1 * self.bok2
+    def get_area(self) -> Union[int, float]:
+        return self.side ** 2
 
 
-class Trojkat(Wielokat):
+class Rectangle(Polygon):
 
-    def __init__(self, bok: Union[int, float], wysokosc: Union[int, float]):
-        self.bok = bok
-        self.wysokosc = wysokosc
+    def __init__(self, side1: Union[int, float], side2: Union[int, float]):
+        self.side1 = side1
+        self.side2 = side2
 
-    def oblicz_pole(self) -> Union[int, float]:
-        return self.bok * self.wysokosc * 0.5
-
-
-wielokaty = [Kwadrat(2), Prostokat(2,3), Trojkat(3, 4)]
+    def get_area(self) -> Union[int, float]:
+        return self.side1 * self.side2
 
 
-def licz_pola(wielokaty: list) -> list:
+class Triangle(Polygon):
+
+    def __init__(self, side: Union[int, float], height: Union[int, float]):
+        self.side = side
+        self.height = height
+
+    def get_area(self) -> Union[int, float]:
+        return self.side * self.height * 0.5
+
+
+polygons = [Square(2), Rectangle(2, 3), Triangle(3, 4)]
+
+
+def get_area(polygons: list) -> list:
     """Oblicza pola wszystkich wielokatow podanych w liscie.
 
-    :param wielokaty: lista obiektow dziedziczacych po Wielokat.
+    :param polygons: lista obiektow dziedziczacych po Wielokat.
     :return: lista obliczonych pol.
 
     """
-    return [figura.oblicz_pole() for figura in wielokaty]
+    return [figure.get_area() for figure in polygons]
 
 
 
